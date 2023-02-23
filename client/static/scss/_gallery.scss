@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "lg";
+  src: url("./fonts/lg.ttf") format("truetype"),
+    url("./fonts/lg.woff") format("woff"),
+    url("./fonts/lg.woff2") format("woff2"), url("./fonts/lg.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.gallery {
+  gap: 2rem;
+
+  &-pricing {
+    width: 300px;
+  }
+  &-item {
+    width: 200px;
+    padding: 5px;
+  }
+
+  &-container {
+    flex: 1 1 auto;
+    height: 400px;
+  }
+}

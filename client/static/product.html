@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./lib-css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./lib-css/lightgallery-bundle.min.css" />
+    <link rel="stylesheet" href="./css/catalog.css" />
+    <script src="./scripts/bootstrap.min.js" defer></script>
+    <title>Product name</title>
+  </head>
+  <body>
+    <header class="text-bg-primary p-2">
+      <div class="container">
+        <h1>Rental Housing</h1>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mt-4">
+            <li class="breadcrumb-item">Аренда</li>
+            <li class="breadcrumb-item">На месяц</li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Беспроцентная рассрочка на квартиры в «Минск Мир»
+            </li>
+          </ol>
+        </nav>
+        <h3>Беспроцентная рассрочка на квартиры в «Минск Мир»</h3>
+        <h4>Минск, Аэродромная ул.</h4>
+        <h4>
+          Аэродромная (2023) ~ 550 метров, Ковальская Слобода ~ 700 метров
+        </h4>
+        <div class="d-flex gallery">
+          <div
+            class="gallery-container d-flex align-items-center justify-content-center"
+            id="gallery-container"
+          ></div>
+          <div class="card gallery-pricing">
+            <div class="card-body">
+              <div class="d-flex gap-4">
+                <div>
+                  <h6>BYN</h6>
+                  <h5>89 307 BYN</h5>
+                  <h6>1 064 USD/м<span>&#178;</span></h6>
+                </div>
+                <div>
+                  <h6>USD</h6>
+                  <h5>31 917 USD</h5>
+                  <h6>1 064 USD/м<span>&#178;</span></h6>
+                </div>
+              </div>
+              <h6>Условия сделки: <span>долевое строительство</span></h6>
+              <h6>Срок сдачи: <span>На стадии строительства</span></h6>
+              <a href="#" class="btn btn-primary mt-4">+375 17 388-17-19</a>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex gap-4">
+          <div>
+            <h4>Тип дома</h4>
+            <h5>каркасно-блочный</h5>
+          </div>
+          <div>
+            <h4>Срок сдачи</h4>
+            <h5>На стадии строительства</h5>
+          </div>
+          <div>
+            <h4>Высота потолков</h4>
+            <h5>2.7 м</h5>
+          </div>
+          <div>
+            <h4>Сайт проекта</h4>
+            <h5><a href="bir.by">bir.by</a></h5>
+          </div>
+        </div>
+        <h4>Описание</h4>
+        <p>
+          Minsk World — будущее страны! Minsk World — это метрополис на
+          территории Минска, уникальная мировая концепция многофункционального
+          жилого и офисного комплекса.<br />
+          Minsk World является крупнейшим строительным проектом Беларуси и
+          насчитывает 3 млн кв.м застройки с акцентом на экологии и биодизайне.
+          Основой проекта является Международный финансовый центр, который
+          органично сочетается с другими знаковыми объектами — такими, как парк,
+          выставочный центр, музей, театр, спортивная арена,
+          торгово-развлекательный центр. Проект Minsk World предлагает развитую
+          социальную структуру с современными школами и детскими садами, и жилой
+          комплекс с комфортной застройкой, плавно переходящей к зеленому
+          массиву: от высотных домов до малоэтажной застройки, коттеджных
+          посёлков и вилл на берегу уютных водоёмов.<br />
+          Метрополис Minsk World должен стать основным архитектурным и городским
+          проектом будущего с глобальной ролью в развитии экономики. Уважение к
+          традициям и инновационный характер проекта подчеркиваются его
+          расположением на месте бывшего аэропорта «Minsk 1», где всегда будет
+          жить атмосфера путешествий и жажда новых впечатлений. Историческое
+          здание аэропорта бережно сохраняется, и после реконструкции в нём
+          откроется музей.
+        </p>
+        <h4>Расположение на карте</h4>
+        <p>г. Минск, Аэродромная ул.</p>
+      </div>
+    </main>
+    <footer class="text-bg-secondary p-5">
+      <div class="container text-center">
+        <h1>Rental Housing</h1>
+        <h6>Курсовой проект</h6>
+        <h6>Олеников Михаил Фадеевич ПО-447</h6>
+      </div>
+    </footer>
+    <script src="./scripts/lightgallery.min.js"></script>
+    <script src="./scripts/lg-zoom.min.js"></script>
+    <script src="./scripts/lg-thumbmail.min.js"></script>
+
+    <script type="text/javascript">
+      const lgContainer = document.getElementById("gallery-container");
+      const inlineGallery = lightGallery(lgContainer, {
+        dynamic: true,
+        slideDelay: 400,
+        hash: false,
+        // Do not allow users to close the gallery
+        closable: false,
+        // Add maximize icon to enlarge the gallery
+        showMaximizeIcon: true,
+        container: lgContainer,
+        // Do not allow users to close the gallery
+        closable: false,
+        // Add maximize icon to enlarge the gallery
+        showMaximizeIcon: true,
+        dynamicEl: [
+          {
+            src: "./assets/images/carousel1.jpg",
+            thumb: "./assets/images/carousel1.jpg",
+          },
+          {
+            src: "./assets/images/carousel2.jpg",
+            thumb: "./assets/images/carousel2.jpg",
+          },
+          {
+            src: "./assets/images/carousel3.jpg",
+            thumb: "./assets/images/carousel3.jpg",
+          },
+        ],
+        plugins: [lgZoom, lgThumbnail],
+      });
+
+      // Since we are using dynamic mode, we need to programmatically open lightGallery
+      inlineGallery.openGallery(0);
+    </script>
+  </body>
+</html>
