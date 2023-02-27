@@ -19,7 +19,9 @@ app.get('/', (req, res) => {
       data.forEach((el) => {
         houses.push({...el.attributes, city: el.attributes.city.data.attributes.City,
         Gallery: 'http://127.0.0.1:1337' + el.attributes.Gallery.data[0].attributes.formats.medium.url,
-        PriceBYN: formatPrice(data.PriceBYN)})
+        PriceBYN: formatPrice(data.PriceBYN),
+        link: 'http://127.0.0.1:3000' + '/product/' + el.id
+      })
       });      
       console.log(data)
       res.render('index', {layout: false, cards: houses})

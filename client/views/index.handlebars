@@ -12,7 +12,7 @@
   <body>
     <header class="text-bg-primary p-2">
       <div class="container">
-        <h1>Rental Housing</h1>
+        <h1><a class="reset-link-styles" href="http://127.0.0.1:3000">Rental Housing</a></h1>
       </div>
     </header>
     <main class="mt-4">
@@ -135,7 +135,7 @@
         </div>
         <div class="row row-gap-4 mb-4">
           {{#each cards}}
-            <a href="" class="card-container col-lg-3">
+            <a href="{{link}}" class="reset-link-styles col-lg-3">
               <div class="card">
                 <img src="{{Gallery}}"
                   class="card-img-top"
