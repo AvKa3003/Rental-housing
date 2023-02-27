@@ -12,17 +12,29 @@ app.set('views', './views')
 app.use(express.static('static'))
 
 app.get('/', (req, res) => {
-  console.log(req.url);
-  res.render('index', {layout: false, name: '123'})
+  (async () => {
+    try {
+      const data = (await axios.get(`http://127.0.0.1:1337/api/houses/??pagination[page]=1&pagination[pageSize]=8&populate[city][fields][0]=City&populate[Gallery][populate][formats][fields][0]=formats&fields[0]=Title&fields[1]=Address&fields[2]=GeneralFlattening&fields[3]=Floor&fields[4]=TotalFloors&fields[5]=PriceBYN&field[6]=id`)).data.data;
+      const houses = []
+      data.forEach((el) => {
+        houses.push({...el.attributes, city: el.attributes.city.data.attributes.City,
+        Gallery: 'http://127.0.0.1:1337' + el.attributes.Gallery.data[0].attributes.formats.medium.url,
+        PriceBYN: formatPrice(data.PriceBYN)})
+      });      
+      console.log(data)
+      res.render('index', {layout: false, cards: houses})
+    } catch (error) {
+      console.log(error);
+      res.json(error)
+    }
+  })()
 })
 
 app.get('/catalog', (req, res) => {
-  console.log(req.url);
   res.render('catalog', {layout: false, name: '123'})
 })
 
 app.get('/product/:id', (req, res) => {
-  console.log(req.url);
   (async () => {
     try {
       const data = await (await axios.get(`http://127.0.0.1:1337/api/houses/${req.params.id}?populate=Gallery&populate=city`)).data.data.attributes;
@@ -46,7 +58,6 @@ app.get('/product/:id', (req, res) => {
         priceUSD: formatPrice((data.PriceBYN / exchangeRate).toFixed(0)),
         pricePerMetreUSD: formatPrice((data.PriceBYN / exchangeRate / +data.GeneralFlattening).toFixed(0)),
         phoneNumber: formatPhoneNumber(data.PhoneNumber),
-        transport: data.Transport,
         gallery: [],
         city: city
       }
