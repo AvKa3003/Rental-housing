@@ -1,3 +1,10 @@
 @import "slider";
 @import "reset";
 @import "base";
+
+.card-description {
+  display: block;
+  overflow: hidden;
+  height: 3em;
+  text-overflow: ellipsis;
+}

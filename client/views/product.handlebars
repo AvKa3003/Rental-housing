@@ -86,6 +86,12 @@
             <li>{{@key}}: {{this}}</li>
           {{/each}}
         </ul>
+        <h4>Удобства</h4>
+        <div class="row mb-4">
+          {{#each features}}
+          <span class="col-lg-3">{{this}}</span>
+          {{/each}}
+        </div>
         <h4>Расположение на карте</h4>
         <p>{{city}}, {{address}}</p>
         <div class="mb-4">
