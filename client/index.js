@@ -30,24 +30,25 @@ app.get('/', (req, res) => {
     //   res.json(error)
     // }
     try {
-      let data = (await axios.get(`http://127.0.0.1:1337/api/pharmacies?pagination[page]=1&pagination[pageSize]=4`)).data.data
+      let data = (await axios.get(`http://127.0.0.1:1337/api/offices?pagination[page]=1&pagination[pageSize]=4`)).data.data
       // console.log(data)
-      const pharmacies = data.map(el => {
+      const offices = data.map(el => {
         return {
           ...el.attributes,
           id: el.id
         }
       })
-      console.log(pharmacies);
-      data = (await axios.get(`http://127.0.0.1:1337/api/medicines?pagination[page]=1&pagination[pageSize]=4&populate=image`)).data.data
-      const medicines = data.map(el => {
+      console.log(offices);
+      data = (await axios.get(`http://127.0.0.1:1337/api/specialists?pagination[page]=1&pagination[pageSize]=4&populate=photo`)).data.data
+      console.log(data);
+      const specialists = data.map(el => {
         return {
           ...el.attributes,
-          image: 'http://127.0.0.1:1337' + el.attributes.image.data.attributes.formats.thumbnail.url
+          photo: 'http://127.0.0.1:1337' + el.attributes.photo.data.attributes.url
         }
       })
-      console.log(medicines);
-      res.render('index', {layout: false, pharmacies: pharmacies, medicines: medicines})
+      console.log(specialists);
+      res.render('index', {layout: false, offices: offices, specialists: specialists})
     } catch (error) {
       console.log(error);
       res.json(error)
@@ -59,15 +60,16 @@ app.get('/', (req, res) => {
 app.get('/catalog', (req, res) => {
   (async () => {
     try {
-      let data = (await axios.get(`http://127.0.0.1:1337/api/medicines?pagination[page]=1&pagination[pageSize]=4&populate=image`)).data.data
-      const medicines = data.map(el => {
+      let data = (await axios.get(`http://127.0.0.1:1337/api/specialists?pagination[page]=1&pagination[pageSize]=16&populate=photo`)).data.data
+      console.log(data);
+      const specialists = data.map(el => {
         return {
           ...el.attributes,
-          image: 'http://127.0.0.1:1337' + el.attributes.image.data.attributes.formats.thumbnail.url
+          photo: 'http://127.0.0.1:1337' + el.attributes.photo.data.attributes.url
         }
       })
-      console.log(medicines);
-      res.render('catalog', {layout: false, medicines: medicines})
+      console.log(specialists);
+      res.render('catalog', {layout: false, specialists: specialists})
       
     } catch (error) {
       console.log(error);
@@ -79,16 +81,16 @@ app.get('/catalog', (req, res) => {
 app.get('/address', (req, res) => {
   (async () => {
     try {
-      let data = (await axios.get(`http://127.0.0.1:1337/api/pharmacies?pagination[page]=1&pagination[pageSize]=4`)).data.data
+      let data = (await axios.get(`http://127.0.0.1:1337/api/offices?pagination[page]=1&pagination[pageSize]=10`)).data.data
       // console.log(data)
-      const pharmacies = data.map(el => {
+      const offices = data.map(el => {
         return {
           ...el.attributes,
           id: el.id
         }
       })
-      console.log(pharmacies);
-      res.render('address', {layout: false, pharmacies: pharmacies})
+      console.log(offices);
+      res.render('address', {layout: false, offices: offices})
     } catch (error) {
       console.log(error);
       res.json(error)

@@ -10,48 +10,44 @@
     <title>Pharmacy</title>
   </head>
   <body>
-    <header class="text-bg-secondary p-2">
+    <header class="p-4" style="background: linear-gradient(0deg, rgba(255,217,45,1) 0%, rgba(255,142,142,1) 100%);">
       <div class="container">
-        <h1 class="text-end"><a class="reset-link-styles" href="http://127.0.0.1:3000">Pharmacy</a></h1>
+        <h1 class="text-end"><a class="reset-link-styles" style="color: white" href="http://127.0.0.1:3000">Страховая компания</a></h1>
       </div>
     </header>
     <main class="mt-4">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6">
-            <p>Препараты</p>
+          <div class="">
+            <h1 class="mb-2">Наши специалисы</h1р>
             <div class="row">
-              {{#each medicines}}
-              <div class="col-sm-6">
-                <div class="card d-flex justify-content-between flex-column" style="height: 100%">
-                  <img src="{{image}}" alt="medicine_img">
+              {{#each specialists}}
+              <div class="col-sm-3 mb-3">
+                <div class="card d-flex justify-content-between flex-column" style="height: 100%; border-radius: 0">
+                  <img src="{{photo}}" alt="medicine_img">
                   <div class="card-body" style="flex: 0">
-                    <h5 class="mt-a">{{name}}</h5>
-                    <h5>{{price}} BYN</h5>
-                    <h6>В наличии: {{#if availability}}<span>Есть</span>{{else}}<span>Нету</span>{{/if}} </h6>
+                    <h3 class="mt-a">{{fio}}</h3>
+                    <h3>Лет опыта: {{years_of_exp}}</h3>
+                    <h6>Номер телефона:<br/> {{phone_number}}</h6>
                   </div>
                 </div>
               </div>
                 
               {{/each}}
               <p class="container"><button type="button"
-                class="btn btn-secondary mt-2" style="width:100%">Все товары</button></p>
+                class="btn p-2 btn-warning mt-2" style="width:100%; border-radius: 0;">Список специалистов</button></p>
             </div>
           </div>
-          <div class="col-lg-6">
-            <p>Адреса аптек</p>
+          <div class="">
+            <h1>Список отделений</h1>
             <div class="row">
-              {{#each pharmacies}}
-                <div class="card">
-                  <div class="card-body">
-                    {{{map_link}}}
-                    <h5 class="card-title">{{address}}</h5>
-                    <h5 class="card-title">{{time}}</h5>
-                  </div>
-                </div>
-              {{/each}}
-              <button type="button"
-                class="btn btn-secondary mt-2">Все аптеки</button>
+              <script type="text/javascript"
+                charset="utf-8"
+                async
+                src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A424fe5c031ac70a8b55c7d1e10b603dd68d2a2605a4e324bedb1df5dcb9175d6&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+              <p class="container mt-3"><button type="button"
+                  class="btn p-2 btn-warning mt-2"
+                  style="width:100%; border-radius: 0;">Все отделения</button></p>
             </div>
           </div>
         </div>
