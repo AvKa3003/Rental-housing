@@ -21,14 +21,13 @@
           <div class="">
             <h1 class="mb-2">Наши специалисы</h1р>
             <div class="row">
-              {{#each specialists}}
-              <div class="col-sm-3 mb-3">
+              {{#each article}}
+              <div class="mb-3">
                 <div class="card d-flex justify-content-between flex-column" style="height: 100%; border-radius: 0">
                   <img src="{{photo}}" alt="medicine_img">
                   <div class="card-body" style="flex: 0">
-                    <h3 class="mt-a">{{fio}}</h3>
-                    <h3>Лет опыта: {{years_of_exp}}</h3>
-                    <h6>Номер телефона:<br/> {{phone_number}}</h6>
+                    <h3 class="mt-a">{{Title}}</h3>
+                    <p>Лет опыта: {{Content}}</p>
                   </div>
                 </div>
               </div>

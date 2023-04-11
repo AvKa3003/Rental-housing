@@ -1,23 +1,27 @@
 {
   "kind": "collectionType",
-  "collectionName": "specialists",
+  "collectionName": "articles",
   "info": {
-    "singularName": "specialist",
-    "pluralName": "specialists",
-    "displayName": "Specialist"
+    "singularName": "article",
+    "pluralName": "articles",
+    "displayName": "Article",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "fio": {
-      "type": "string"
+    "Title": {
+      "type": "text"
     },
-    "phone_number": {
-      "type": "string"
+    "Content": {
+      "type": "richtext"
     },
-    "photo": {
+    "Date": {
+      "type": "date"
+    },
+    "Image": {
       "allowedTypes": [
         "images",
         "files",
@@ -26,9 +30,6 @@
       ],
       "type": "media",
       "multiple": false
-    },
-    "years_of_exp": {
-      "type": "integer"
     }
   }
 }

@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * office controller
+ * article controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::office.office');
+module.exports = createCoreController('api::article.article');

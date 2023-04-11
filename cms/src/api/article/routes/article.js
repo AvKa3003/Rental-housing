@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * office router
+ * article router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::office.office');
+module.exports = createCoreRouter('api::article.article');

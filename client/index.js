@@ -13,42 +13,27 @@ app.use(express.static('static'))
 
 app.get('/', (req, res) => {
   (async () => {
-    // try {
-    //   const data = (await axios.get(`http://127.0.0.1:1337/api/houses/??pagination[page]=1&pagination[pageSize]=8&populate[city][fields][0]=City&populate[Gallery][populate][formats][fields][0]=formats&fields[0]=Title&fields[1]=Address&fields[2]=GeneralFlattening&fields[3]=Floor&fields[4]=TotalFloors&fields[5]=PriceBYN&field[6]=id`)).data.data;
-    //   const houses = []
-    //   data.forEach((el) => {
-    //     houses.push({...el.attributes, city: el.attributes.city.data.attributes.City,
-    //     Gallery: 'http://127.0.0.1:1337' + el.attributes.Gallery.data[0].attributes.formats.medium.url,
-    //     PriceBYN: formatPrice(data.PriceBYN),
-    //     link: 'http://127.0.0.1:3000' + '/product/' + el.id
-    //   })
-    //   });      
-    //   console.log(data)
-    //   res.render('index', {layout: false, cards: houses})
-    // } catch (error) {
-    //   console.log(error);
-    //   res.json(error)
-    // }
+
     try {
-      let data = (await axios.get(`http://127.0.0.1:1337/api/offices?pagination[page]=1&pagination[pageSize]=4`)).data.data
-      // console.log(data)
-      const offices = data.map(el => {
+      let data = (await axios.get(`http://127.0.0.1:1337/api/articles?pagination[page]=1&pagination[pageSize]=1`)).data.data
+      console.log(data)
+      const article = data.map(el => {
         return {
           ...el.attributes,
           id: el.id
         }
       })
-      console.log(offices);
-      data = (await axios.get(`http://127.0.0.1:1337/api/specialists?pagination[page]=1&pagination[pageSize]=4&populate=photo`)).data.data
-      console.log(data);
-      const specialists = data.map(el => {
-        return {
-          ...el.attributes,
-          photo: 'http://127.0.0.1:1337' + el.attributes.photo.data.attributes.url
-        }
-      })
-      console.log(specialists);
-      res.render('index', {layout: false, offices: offices, specialists: specialists})
+      // console.log(article);
+      // data = (await axios.get(`http://127.0.0.1:1337/api/specialists?pagination[page]=1&pagination[pageSize]=4&populate=photo`)).data.data
+      // console.log(data);
+      // const specialists = data.map(el => {
+      //   return {
+      //     ...el.attributes,
+      //     photo: 'http://127.0.0.1:1337' + el.attributes.photo.data.attributes.url
+      //   }
+      // })
+      // console.log(specialists);
+      res.render('index', {layout: false, article: article})
     } catch (error) {
       console.log(error);
       res.json(error)
@@ -61,7 +46,7 @@ app.get('/catalog', (req, res) => {
   (async () => {
     try {
       let data = (await axios.get(`http://127.0.0.1:1337/api/specialists?pagination[page]=1&pagination[pageSize]=16&populate=photo`)).data.data
-      console.log(data);
+      // console.log(data);
       const specialists = data.map(el => {
         return {
           ...el.attributes,
@@ -98,47 +83,6 @@ app.get('/address', (req, res) => {
   })()
 })
 
-app.get('/product/:id', (req, res) => {
-  (async () => {
-    // try {
-    //   const data = await (await axios.get(`http://127.0.0.1:1337/api/houses/${req.params.id}?populate=Gallery&populate=city`)).data.data.attributes;
-    //   data.PriceBYN = +data.PriceBYN
-    //   // const data = cmsData.data.attributes;
-    //   const city = data.city.data.attributes.City
-    //   // console.log(formatPrice(data.PriceBYN));
-    //   const productInfo = {
-    //     title: data.Title,
-    //     address: data.Address,
-    //     parameters: data.Parameters,
-    //     features: data.Features,
-    //     generalFlattening: data.GeneralFlattening,
-    //     livingArea: data.LivingArea,
-    //     description: data.Description,
-    //     mapLink: data.MapLink,
-    //     floor: data.Floor,
-    //     totalFloors: data.TotalFloors,
-    //     priceBYN: formatPrice(data.PriceBYN),
-    //     pricePerMetreBYN: formatPrice((data.PriceBYN / +data.GeneralFlattening).toFixed(0)),
-    //     priceUSD: formatPrice((data.PriceBYN / exchangeRate).toFixed(0)),
-    //     pricePerMetreUSD: formatPrice((data.PriceBYN / exchangeRate / +data.GeneralFlattening).toFixed(0)),
-    //     phoneNumber: formatPhoneNumber(data.PhoneNumber),
-    //     gallery: [],
-    //     city: city
-    //   }
-    //   // console.log(data.Gallery.data);
-    //   data.Gallery.data.forEach(el => { productInfo.gallery.push({ 
-    //     src: 'http://127.0.0.1:1337' + el.attributes.url,
-    //     thumb: 'http://127.0.0.1:1337' + el.attributes.formats.thumbnail.url
-    // })});
-      
-    //   res.render('product', {layout: false, ...productInfo})
-    // } catch (error) {
-    //   console.log(error);
-    //   res.json(error)
-    // }
-    res.render('product', {layout: false})
-  })()
-})
 
 app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`);
